@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +47,29 @@ class ItemAdapter extends ArrayAdapter<Items> {
         TextView price = view.findViewById(R.id.item1_price);
         price.setText(currentItem.getItemPrice() + "");
 
-     
+
+        ImageView remove = view.findViewById(R.id.removeButton);
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext())
+                        .setTitle("Bro you sure???")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                items.remove(position);
+                                notifyDataSetChanged();
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        }).show();
+                alertDialog.create();
+            }
+        });
+
         return view;
     }
 }

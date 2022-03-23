@@ -3,9 +3,6 @@ package com.example.android.listviewproject;
 import java.io.Serializable;
 
 class Items implements Serializable {
-
-
-
     String itemName;
     int itemImage;
     double itemPrice;
@@ -13,7 +10,7 @@ class Items implements Serializable {
     /*
     public Items("cheese", R.drawable.cheese, 2) {
         this.itemName = "cheese";
-        this.itemIamge = R.drawable.cheese;
+        this.itemImage = R.drawable.cheese;
         this.itemPrice = 2;
     }
      */
